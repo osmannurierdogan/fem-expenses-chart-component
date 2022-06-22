@@ -1,43 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Expenses chart component</title>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+		<title>Frontend Mentor | Expenses chart component</title>
+	</head>
+	<body>
+		<section class="section">
+			<div class="container">
+				<div class="container__header">
+					<div class="container__header__text">
+						<span>My balance</span>
+						<span class="container__header__text--amount">$921.48</span>
+					</div>
+					<div class="container__header__icon">
+						<img src="./images/logo.svg" alt="Container Header Logo" />
+					</div>
+				</div>
+				<div class="container__body">
+					<p class="container__body--title">Spending - Last 7 days</p>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+					<div class="container__body__chart"></div>
 
-  My balance
-  $921.48
+					<div class="seperator"></div>
+					<div class="container__body__footer">
+						<div class="container__body__footer__left">
+							<span>Total this month</span>
+							<span class="container__body__footer__left--amount">$478.33</span>
+						</div>
+						<div class="container__body__footer__right">
+							<span class="container__body__footer__right--percentage">
+								+2.4%
+							</span>
+							<span>from last month</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-  Spending - Last 7 days
+		<div class="attribution">
+			Challenge by
+			<a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+				>Frontend Mentor</a
+			>. Coded by
+			<a href="https://linkedin.com/in/osmannurierdogan">Osman Nuri Erdogan</a>.
+		</div>
 
-  mon
-  tue
-  wed
-  thu
-  fri
-  sat
-  sun
-
-  Total this month
-  $478.33
-
-  +2.4%
-  from last month
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+		<script src="./fetch-data-from-json.js" defer></script>
+	</body>
 </html>
+
