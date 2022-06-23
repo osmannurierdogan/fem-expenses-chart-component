@@ -12,35 +12,50 @@ const fetchChartData = async () => {
 			//return data;
 		});
 	createChartItem(dataArray);
-	/* chartBox.childNodes.forEach((chartItem) => {
-		console.log(
-			"chartItem.firstElementChild.textContent :>> ",
-			chartItem.firstElementChild.textContent,
-		);
-		chartItem.style.height = `calc(${chartItem.firstElementChild.textContent}px * 2)`;
-	}); */
-	for (let i = 0; i < chartBox.childNodes.length; i++) {
-		chartBox.childNodes[j].firstElementChild.style.height = 
-		`calc(${chartBox.childNodes.firstElementChild.textContent}px * 2)`;
-	}
 };
 const createChartItem = (array) => {
 	for (let j = 0; j < array.length; j++) {
 		let element = `<div class="container__body__chart__item">
-	    <span class="container__body__chart__item--shape container__body__chart__item--shape--${j}">
-        ${array[j].amount}
+			<span class="container__body__chart__item__text">${array[j].amount}</span>
+	    <span class="container__body__chart__item--shape">
       </span>
 	    <span class="container__body__chart__item--day">
         ${array[j].day}
       </span>
     </div>`;
 		chartBox.innerHTML += element;
+
+		const shapeItemsText = document.querySelectorAll(
+			".container__body__chart__item>.container__body__chart__item__text",
+		);
+		const shapeItems = document.querySelectorAll(
+			".container__body__chart__item>.container__body__chart__item--shape",
+		);
+
+		shapeItems.forEach((shapeItem, index) => {
+			shapeItem.style.height = `calc(${array[index].amount}px * 3)`;
+			const maxAmountObject = array.reduce((max, object) =>
+				max.amount > object.amount ? max : object,
+			);
+			
+			if (shapeItemsText[index].textContent == maxAmountObject.amount) {
+				shapeItem.classList.add(
+					"container__body__chart__item--shape--max",
+				);
+			}
+
+			shapeItem.addEventListener("mouseover", () => {
+				shapeItemsText[index].style.visibility = "visible";
+				shapeItemsText[index].style.transition = "all 0.3s";
+			});
+			shapeItem.addEventListener("mouseleave", () => {
+				shapeItemsText[index].style.transition = "all 0.1s";
+				shapeItemsText[index].style.visibility = "hidden";
+			});
+		});
+
+		shapeItemsText.forEach((item) => {});
 	}
 };
 
 fetchChartData();
-
-/* const chartItemShapes = document.querySelectorAll(
-	".container__body__chart__item--shape",
-); */
-//console.log('chartItemShapes :>> ', chartItemShapes);

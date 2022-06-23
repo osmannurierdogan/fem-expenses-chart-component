@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-  width: 30%;
+  width: 35%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -88,6 +88,7 @@ body {
 }
 
 .container__body__chart {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,10 +99,11 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
   margin: 2rem auto;
+  text-align: center;
 }
 
 .container__body__chart__item {
@@ -115,17 +117,48 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.container__body__chart__item__text {
+  font-size: 1.4rem;
+  background-color: #382314;
+  color: #f8e9dd;
+  padding: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  visibility: hidden;
 }
 
 .container__body__chart__item--shape {
   background-color: #ec775f;
   margin-bottom: 0.5rem;
+  /* width: 140%;
+					min-width: 3rem;
+					max-width: 180%; */
+  width: 80%;
+  border-radius: 0.5rem;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.container__body__chart__item--shape--max {
+  background-color: #76b5bc;
+}
+
+.container__body__chart__item--shape:hover {
+  opacity: 0.5;
 }
 
 .container__body__chart__item--day {
-  font-size: 1.4rem;
+  text-align: center;
+  font-size: 1.1rem;
   color: #93867b;
 }
 
