@@ -1,13 +1,5 @@
 const chartBox = document.querySelector(".container__body__chart");
-//const chartItem = document.querySelector(".container__body__chart__item");
-//const chartItem = document.createElement("div");
-//chartItem.classList.add("container__body__chart__item");
-//const itemShape = document.createElement("span");
-//itemShape.classList.add("container__body__chart__item--shape");
-//const itemDay = document.createElement("span");
-//itemDay.classList.add("container__body__chart__item--day");
 
-console.log("chartBox :>> ", chartBox);
 const dataArray = [];
 const fetchChartData = async () => {
 	await fetch("./data.json")
@@ -19,34 +11,36 @@ const fetchChartData = async () => {
 			}
 			//return data;
 		});
-	/* 
-  //dataArray.forEach((item) => {
-	//	itemShape.textContent = item.amount;
-	//	itemDay.textContent = item.day;
-	//	console.log("itemShape.textContent :>> ", itemShape.textContent);
-	//	console.log("itemDay.textContent :>> ", itemDay.textContent);
-	//	chartItem.appendChild(itemShape);
-	//	chartItem.appendChild(itemDay);
-	//	chartBox.appendChild(chartItem);
-	//}); */
-	for (let j = 0; j < dataArray.length; j++) {
-		//console.log('dataArray[j] :>> ', dataArray[j]);
-		//itemShape.textContent = dataArray[j].amount;
-		//itemDay.textContent = dataArray[j].day;
-		//chartItem.appendChild(itemShape);
-		//chartItem.appendChild(itemDay);
-		//chartBox.appendChild(chartItem);
-    let element = `<div class="container__body__chart__item">
-	    <div class="container__body__chart__item--shape">
-        ${dataArray[j].amount}
-      </div>
-	    <div class="container__body__chart__item--day">
-        ${dataArray[j].day}
-      </div>
-    </div>`;
-    chartBox.appendChild(element);
+	createChartItem(dataArray);
+	/* chartBox.childNodes.forEach((chartItem) => {
+		console.log(
+			"chartItem.firstElementChild.textContent :>> ",
+			chartItem.firstElementChild.textContent,
+		);
+		chartItem.style.height = `calc(${chartItem.firstElementChild.textContent}px * 2)`;
+	}); */
+	for (let i = 0; i < chartBox.childNodes.length; i++) {
+		chartBox.childNodes[j].firstElementChild.style.height = 
+		`calc(${chartBox.childNodes.firstElementChild.textContent}px * 2)`;
 	}
-  
+};
+const createChartItem = (array) => {
+	for (let j = 0; j < array.length; j++) {
+		let element = `<div class="container__body__chart__item">
+	    <span class="container__body__chart__item--shape container__body__chart__item--shape--${j}">
+        ${array[j].amount}
+      </span>
+	    <span class="container__body__chart__item--day">
+        ${array[j].day}
+      </span>
+    </div>`;
+		chartBox.innerHTML += element;
+	}
 };
 
 fetchChartData();
+
+/* const chartItemShapes = document.querySelectorAll(
+	".container__body__chart__item--shape",
+); */
+//console.log('chartItemShapes :>> ', chartItemShapes);

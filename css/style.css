@@ -120,7 +120,8 @@ body {
 }
 
 .container__body__chart__item--shape {
-  background-color: aqua;
+  background-color: #ec775f;
+  margin-bottom: 0.5rem;
 }
 
 .container__body__chart__item--day {

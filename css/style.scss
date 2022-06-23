@@ -84,7 +84,9 @@ body {
         align-items: center;
         justify-content: space-around;
         &--shape{
-          background-color: aqua;
+          background-color: $color-primary-soft-red;
+					margin-bottom: 0.5rem;
+					
         }
         &--day{
           font-size: 1.4rem;
